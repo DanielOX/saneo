@@ -5,8 +5,10 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 
 
-class EventBooking extends Model
+class Sales extends Model
 {
+    protected $table = "sales";
+
      protected $fillable = [
          'userd_id',
          'event_id',

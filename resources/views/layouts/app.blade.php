@@ -44,6 +44,9 @@
 
 <body>
 <!--|Preloader|-->
+
+@yield('notifications')
+
 <div class="preloader">
   <div class="preloader-inner">
     <div>
@@ -74,7 +77,7 @@
             </button> <!--|End Toggle Btn|-->
 
             <!--|Brand( Logo )|-->
-            <a class="navbar-brand" href="#home">
+            <a class="navbar-brand" href="/">
               <img class="logo-white" alt="rhyme" src="{{url('assets/images/logo_white.png')}}">
               <img class="logo-black" alt="rhyme" src="{{url('assets/images/logo_black.png')}}">
             </a> <!--|End Brand( Logo )|-->
@@ -85,10 +88,11 @@
             <ul class="nav navbar-nav navbar-right">
             <li><a href="{{ route('events') }}">Events</a></li>
             <li><a href="{{ route('about-us') }}">About Us</a></li>
-            <li><a href="#benefits">Benefits</a></li>
             <li><a href="{{ route('packages') }}">Packages</a></li>
               @auth
                 <li><a href="{{ url('/home') }}">Home</a></li>
+                <li><a href="{{ url('/logout') }}">Logout</a></li>
+                
               @else
               <li><a href="{{ route('login') }}">Login</a></li>
               <li><a href="{{ route('register') }}">Register</a></li>
@@ -128,7 +132,7 @@
 
 
 
-<section style="height:100vh;margin-top:5%">
+<section style="height:auto;margin-top:5%">
     @yield('content')
 </section>
 
@@ -155,14 +159,7 @@
       
             <div class="col-md-8">
               <!--|Subscribe Form|-->
-              <form class="subscribe-form">
-                <p class="subscribe-success" style="color: #008000"></p>
-                <p class="subscribe-error" style="color: #ff0000"></p>
-                <div class="row">
-                  <div class="col-md-8"><input type="email" placeholder="Enter your email address" name="EMAIL"></div>
-                  <div class="col-md-4"><button type="submit" class="submit-btn"><i class="ion-paper-airplane"></i> Subscribe</button></div>
-                </div>
-              </form> <!--|End Subscribe Form|-->
+              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quia ex aliquid quod eum pariatur necessitatibus distinctio, sapiente ea praesentium nihil alias nobis nam dolore libero quos iste, harum deleniti et?
             </div>
           </div>
         </div>
@@ -173,16 +170,11 @@
 <!--||Footer||-->
 <footer id="footer" class="footer">
         <div class="container">
-          <!--|Social Links|-->
-          <div class="social-links">
-            <a href="#"><i class="ion-social-twitter"></i></a>
-            <a href="#"><i class="ion-social-facebook"></i></a>
-            <a href="#"><i class="ion-social-linkedin"></i></a>
-            <a href="#"><i class="ion-social-pinterest"></i></a>
-          </div> <!--|End Social Links|-->
       
           <!--|Copyright|-->
-          <p class="copyright">&copy; 2019 <a href="#">Saneo</a> . All Rights Reserved.</p> <!--|End Copyright|-->
+          <center>
+              <p class="copyright">&copy; 2019 <a href="#">Saneo</a> . All Rights Reserved.</p> <!--|End Copyright|-->
+          </center>
         </div>
       </footer> <!--||Footer||-->
       
@@ -193,8 +185,6 @@
       <script src="{{url('assets/js/jquery.countdown.min.js')}}"></script>
       <!--Owl Carousel-->
       <script src="{{url('assets/js/owl.carousel.min.js')}}"></script>
-      <!--|Google Map|-->
-      <script src="{{url('https://maps.googleapis.com/maps/api/js?v=3.exp')}}"></script>
       <!--|Fitvids|-->
       <script src="{{url('assets/js/jquery.fitvids.js')}}"></script>
       <!--|Validate|-->
@@ -205,5 +195,9 @@
       <script src="{{url('assets/js/bootstrap.min.js')}}"></script>
       <!--|Init|-->
       <script src="{{url('assets/js/init.js')}}"></script>
-      </body>
+      {{-- Stripe --}}
+      <script src="https://js.stripe.com/v3/"></script>
+
+      @yield('scripts')
+    </body>
       </html>

@@ -17,15 +17,17 @@
                 <div class="media">
                         <div class="media-left">
                             <a href="#">
-                            <img class="media-object" style="max-width:80px" src="{{Voyager::image(json_decode($event->image)[0]->download_link)}}" alt="...">
+
+                            @php
+                                $img_arr = json_decode($event->image);
+                                $image = count($img_arr ) > 0 ? $img_arr[0]->download_link : '/saneo/default.jpg' @endphp
+                            <img class="media-object" style="max-width:80px" src="{{Voyager::image($image)}}" alt="...">
                             </a>
                         </div>
                         <div class="media-body">
                             <h4 class="media-heading">{{$event->title}}</h4>
-                            {{ substr($event->description,0,300) }}
-                            <br>    
                             <strong>
-                                <i> {{\Carbon\Carbon::parse($event->date)->format('d, M / Y / h:m:s A')}}</i>
+                               <span class="fa fa-calendar" style="color:blue"></span> <b style="font-size:12px;color:#aaa"> {{\Carbon\Carbon::parse($event->date)->format('d, M / Y / h:m:s A')}}</b>
                             </strong>
                             <br>
                             <a role="button" href="{{route('event.show',['id' => $event->id])}}" class="btn btn-success pull-right" href="">Read More</a>

@@ -11,7 +11,7 @@
 @endsection
 
 @section('call-to-action')
-        <a role="button" href="" class="btn btn-lg btn-primary" > Book Your Seat</a>     
+<a role="button" href="{{route('event.pay',['id' => $event->id])}}" class="btn btn-lg btn-primary" > Book Your Seat ( $ {{$event->price}} ) </a>     
 @endsection
 @section('content')
     <div class="container" >
@@ -43,6 +43,20 @@
             </div>
         </div>
         <br>
-        
+
+
+
+        <div class="container panel" style="padding:24px">
+                <h4 class="head-text text-gradient" style="">Event Feedbacks</h4>
+                <p style="width:15%;border:1px solid #eee;"></p>
+                <div class="panel-body">
+    
+                    @comments(['model' => $event])
+                </div>
+            </div>
+    
+
+
     </div>
+
 @endsection
